@@ -31,9 +31,6 @@ Universitas Siber Asia (UNSIA)
 - Persetujuan atau penolakan pengajuan.
 - Workflow produksi:
 Pending → Approved → Taping → Editing → Ready → Published
-
-yaml
-Copy code
 - Input link video (YouTube/Server) saat publish.
 - Monitoring progres editing dan jadwal studio.
 
@@ -90,39 +87,30 @@ Frontend dibuat menggunakan **Tailwind CSS** dan **Font Awesome**, agar tampilan
 ## 🔧 Instalasi
 
 1. Clone repository:
- ```bash
+ ```
  git clone https://github.com/username/sim-taping.git
  cd sim-taping
 Instal dependensi Laravel:
 
-bash
-Copy code
 composer install
 npm install && npm run dev
 Buat file .env dan konfigurasi database:
 
-bash
-Copy code
 cp .env.example .env
 php artisan key:generate
 Migrasi dan seeding database:
 
-bash
-Copy code
 php artisan migrate --seed
 Jalankan server lokal:
 
-bash
-Copy code
 php artisan serve
 Akses aplikasi di browser:
 👉 http://localhost:8000
 
+```
 🧪 Unit Testing
 Jalankan semua pengujian otomatis menggunakan PHPUnit:
 
-bash
-Copy code
 php artisan test
 Contoh pengujian yang dilakukan:
 
