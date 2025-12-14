@@ -61,8 +61,6 @@ Frontend dibuat menggunakan **Tailwind CSS** dan **Font Awesome**, agar tampilan
 | Database | MySQL |
 | Auth | Laravel Auth / Sanctum |
 | Icon | Font Awesome |
-| Testing | PHPUnit (Unit & Feature Testing) |
-
 ---
 
 ## 🧱 Struktur Database (Ringkasan)
@@ -70,8 +68,6 @@ Frontend dibuat menggunakan **Tailwind CSS** dan **Font Awesome**, agar tampilan
 | Tabel | Deskripsi |
 |--------|-----------|
 | `users` | Menyimpan data akun dosen dan admin |
-| `taping_requests` | Data pengajuan taping (mata kuliah, tanggal, status) |
-| `videos` | Metadata video (judul, prodi, semester, link, status produksi) |
 
 ### 🔗 Relasi Utama
 - `users (1)` → `taping_requests (N)`  
@@ -105,19 +101,6 @@ Akses aplikasi di browser:
 👉 http://localhost:8000
 
 
-🧪 Unit Testing
-Jalankan semua pengujian otomatis menggunakan PHPUnit:
-
-php artisan test
-Contoh pengujian yang dilakukan:
-
-Login Dosen & Admin.
-
-Pengajuan taping baru.
-
-Persetujuan & publikasi video oleh admin.
-
-Validasi status workflow taping.
 
 📸 Panduan Demo
 Demo video (5–10 menit) harus menunjukkan:
@@ -134,27 +117,28 @@ Ubah status hingga Published.
 
 Tampilkan video di Video Library.
 
-🧭 Struktur Folder Laravel
-pgsql
-Copy code
+🧭 Struktur Folder Laravel (Hanya Gambaran kasar, belum di update lagi)
 app/
  ├── Http/
  │   ├── Controllers/
- │   │   ├── Dosen/
- │   │   │   ├── DashboardController.php
- │   │   │   ├── TapingRequestController.php
- │   │   │   └── GuideController.php
- │   │   ├── Admin/
- │   │   │   ├── DashboardController.php
- │   │   │   ├── TapingQueueController.php
- │   │   │   ├── PublishController.php
- │   │   │   └── LecturerController.php
+ │   │   │── Admin/
+ │   │   │  │── AdminController.php
+ │   │   │─ AuthController.php
+ │   │   │─ BookingController.php
+ │   │   │─ DashboardController.php
+ │   │   │─ DosenController.php
+ │   │   │─ DashboardController.php
+ │   │   │─ LibraryController.php
+ │   │   │─ WorkflowController.php
  │   └── Middleware/
+ │   │   │─ RoleMiddleware.php
  ├── Models/
+ │   ├── Booking.php
+ │   ├── Matkul.php
+ │   ├── Prodi.php
+ │   ├── Studio.php
  │   ├── User.php
- │   ├── TapingRequest.php
  │   ├── Video.php
- │   └── Course.php
 database/
  ├── migrations/
  └── seeders/
@@ -163,6 +147,7 @@ resources/
  │   ├── dosen/
  │   ├── admin/
  │   └── layouts/
+ │   └── components/
  └── css/
 🧩 Fitur Tambahan
 📅 Panduan Taping untuk dosen (statis, berisi langkah pengajuan dan aturan).
