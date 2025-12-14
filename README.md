@@ -60,10 +60,10 @@ Frontend dibuat menggunakan **Tailwind CSS** dan **Font Awesome**, agar tampilan
 
 | Komponen          | Teknologi              |
 | ----------------- | ---------------------- |
-| Framework Backend | Laravel 10 / 11        |
+| Framework Backend | Laravel 12        |
 | Frontend          | Blade + Tailwind CSS   |
 | Database          | MySQL                  |
-| Auth              | Laravel Auth / Sanctum |
+| Auth              | Laravel Auth |
 | Icon              | Font Awesome           |
 
 ---
