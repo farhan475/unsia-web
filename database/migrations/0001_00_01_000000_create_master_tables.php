@@ -14,7 +14,7 @@ return new class extends Migration
         Schema::create('prodis', function (Blueprint $table) {
             $table->id();
             $table->string('kode', 10);
-            $table->string('name');
+            $table->string('nama');
             $table->timestamps();
         });
         Schema::create('matkuls', function (Blueprint $table) {
@@ -24,10 +24,9 @@ return new class extends Migration
             $table->string('nama_matkul');
             $table->timestamps();
         });
-        Schema::create('prodis', function (Blueprint $table) {
+        Schema::create('studios', function (Blueprint $table) {
             $table->id();
             $table->string('nama');
-            $table->boolean('is_active')->default(true);
             $table->timestamps();
         });
     }
@@ -37,6 +36,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('master_tables');
+        Schema::dropIfExists('prodis');
+        Schema::dropIfExists('matkuls');
+        Schema::dropIfExists('studios');
     }
 };

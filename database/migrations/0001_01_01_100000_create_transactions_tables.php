@@ -11,16 +11,17 @@ return new class extends Migration
      */
     public function up(): void
     {
-        Schema::create('transactions_tables', function (Blueprint $table) {
+        Schema::create('bookings', function (Blueprint $table) {
             $table->id();
             $table->foreignId('user_id')->constrained('users')->cascadeOnDelete();
             $table->foreignId('matkul_id')->constrained('matkuls');
             $table->foreignId('studio_id')->default(1)->constrained('studios');
-            $table->string('topiks');
-            $table->date('tanggal_tapping');
+            $table->string('topik');
+            $table->date('tanggal_taping');
             $table->string('sesi');
             $table->enum('status',['Pending', 'Approved', 'Rejected', 'Taping', 'Editing', 'Ready', 'Published'])->default('Pending');
             $table->text('catatan_admin')->nullable();
+            $table->text('kebutuhan_khusus')->nullable();
             $table->timestamps();
         });
 
@@ -29,8 +30,8 @@ return new class extends Migration
             $table->foreignId('booking_id')->constrained('bookings')->cascadeOnDelete();
             $table->string('judul_final');
             $table->string('link_video');
-            $table->string('tahun_akademik')->default('2023/2024');
-            $table->enum('semester',['Ganjil', 'Genap'])->default('Ganjil');
+            $table->string('semester')->default('Ganjil');
+            $table->string('tahun_ajar')->default('2023/2024');
             $table->integer('views')->default(0);
             $table->timestamps();
         });
@@ -41,6 +42,7 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('transactions_tables');
+        Schema::dropIfExists('bookings');
+        Schema::dropIfExists('videos');
     }
 };
