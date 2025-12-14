@@ -50,18 +50,27 @@ class User extends Authenticatable
         ];
     }
 
-    public function prodi () {
-        return $this->belongsTo(Prodi::class);
+    public function prodi()
+    {
+        return $this->belongsTo(Prodi::class, 'prodi_id');
     }
-    public function bookings() {
+
+    public function bookings()
+    {
         return $this->hasMany(Booking::class);
     }
 
     //helper function (admin dan dosen)
-    public function isAdmin() {
+    public function isAdmin()
+    {
         return $this->role === 'admin';
     }
-    public function isDosen() {
+    public function isDosen()
+    {
         return $this->role === 'dosen';
+    }
+    public function getNameAttribute()
+    {
+        return $this->nama;
     }
 }

@@ -17,16 +17,20 @@ return new class extends Migration
             $table->string('nama');
             $table->timestamps();
         });
+
         Schema::create('matkuls', function (Blueprint $table) {
             $table->id();
             $table->foreignId('prodi_id')->constrained('prodis')->cascadeOnDelete();
-            $table->string('kode_matkul');
-            $table->string('nama_matkul');
+            $table->string('kode_mk', 20);
+            $table->string('nama_mk');
             $table->timestamps();
         });
+
         Schema::create('studios', function (Blueprint $table) {
             $table->id();
-            $table->string('nama');
+            $table->string('nama')->default('Studio Multimedia'); // contoh: "Studio Multimedia 1"
+            $table->string('kode')->nullable(); 
+            $table->integer('kapasitas')->nullable();
             $table->timestamps();
         });
     }
@@ -36,8 +40,8 @@ return new class extends Migration
      */
     public function down(): void
     {
-        Schema::dropIfExists('prodis');
-        Schema::dropIfExists('matkuls');
         Schema::dropIfExists('studios');
+        Schema::dropIfExists('matkuls');
+        Schema::dropIfExists('prodis');
     }
 };

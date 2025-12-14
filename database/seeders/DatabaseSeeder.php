@@ -2,7 +2,7 @@
 
 namespace Database\Seeders;
 
-use App\Models\{User, Prodi, Matkul, Studio, Booking };
+use App\Models\{User, Prodi, Matkul, Studio, Booking};
 use Illuminate\Database\Console\Seeds\WithoutModelEvents;
 use Illuminate\Database\Seeder;
 use Illuminate\Support\Facades\Hash;
@@ -16,87 +16,49 @@ class DatabaseSeeder extends Seeder
      */
     public function run(): void
     {
-        // master data prodi
         $if = Prodi::create(['kode' => 'IF', 'nama' => 'Informatika']);
         $si = Prodi::create(['kode' => 'SI', 'nama' => 'Sistem Informasi']);
-        $kom = Prodi::create(['kode' => 'KOM', 'nama' => 'Ilmu Komunikasi']);
-        $ak = Prodi::create(['kode' => 'AK', 'nama' => 'Akuntansi']);
-        $mn = Prodi::create(['kode' => 'MN', 'nama' => 'Manajemen']);
 
-        // master data studio
-        Studio::create(['nama' => 'Studio Multimedia 1 (Green Screen)']);
-        Studio::create(['nama' => 'Studio Podcast']);
-
-        // master data matkul (untuk autosearch)
-        $matkuls = [
-            [$if->id, 'IF101', 'Algoritma & Pemrograman'],
-            [$if->id, 'IF202', 'Kecerdasan Buatan'],
-            [$if->id, 'IF303', 'Pemrograman Web Lanjut'],
-            [$si->id, 'SI101', 'Sistem Basis Data'],
-            [$si->id, 'SI202', 'Audit Sistem Informasi'],
-            [$kom->id, 'KM101', 'Pengantar Ilmu Komunikasi'],
-            [$kom->id, 'KM202', 'Jurnalistik Digital'],
-            [$ak->id, 'AK101', 'Akuntansi Dasar'],
-            [$mn->id, 'MN101', 'Pengantar Manajemen'],
-        ];
-
-        foreach ($matkuls as $mk) {
-            Matkul::create([
-                'prodi_id' => $mk[0],
-                'kode_matkul'  => $mk[1],
-                'nama_matkul'  => $mk[2],
-            ]);
-        }
-
-        // user data(admin & dosen)
-
-        // admin
-        User::create([
-            'nama' => 'Admin farhan',
-            'email' => 'admin@unsia.ac.id',
-            'password' => Hash::make('password'), 
-            'role' => 'admin',
-        ]);
-
-        // dosen infor
-        $dosen1 = User::create([
-            'nama' => 'Dr. farhan asyathry',
-            'email' => 'farhan@unsia.ac.id',
-            'password' => Hash::make('password'),
-            'role' => 'dosen',
+        $mk1 = Matkul::create([
             'prodi_id' => $if->id,
-            'nidn' => '0502258000'
+            'kode_mk'  => 'IF101',
+            'nama_mk'  => 'Pemrograman Web',
         ]);
 
-        // dosen ilkom
-        $dosen2 = User::create([
-            'nama' => 'farhan, M.I.Kom',
-            'email' => 'farhan1@unsia.ac.id',
+        $mk2 = Matkul::create([
+            'prodi_id' => $if->id,
+            'kode_mk'  => 'IF202',
+            'nama_mk'  => 'Kecerdasan Buatan',
+        ]);
+
+        User::create([
+            'nama'     => 'Admin Farhan',
+            'email'    => 'admin@unsia.ac.id',
             'password' => Hash::make('password'),
-            'role' => 'dosen',
-            'prodi_id' => $kom->id,
-            'nidn' => '0102030405'
+            'role'     => 'admin',
         ]);
 
-        // dummy data untuk booking(agar dashboard tidak kosong)
-        Booking::create([
-            'user_id' => $dosen1->id,
-            'matkul_id' => 1, // Algoritma
-            'studio_id' => 1,
-            'topik' => 'Pengenalan Flowchart',
-            'tanggal_taping' => now()->addDays(2), // 2 hari lagi
-            'sesi' => '09:00 - 11:00',
-            'status' => 'Pending'
+        $dosen = User::create([
+            'nama'     => 'Dr. Farhan',
+            'email'    => 'farhan@unsia.ac.id',
+            'password' => Hash::make('password'),
+            'role'     => 'dosen',
+            'prodi_id' => $if->id,
         ]);
 
         Booking::create([
-            'user_id' => $dosen2->id,
-            'matkul_id' => 6, // Pengantar Ilkom
-            'studio_id' => 1,
-            'topik' => 'Teori Komunikasi Dasar',
-            'tanggal_taping' => now()->subDays(1), // Kemarin
-            'sesi' => '13:00 - 15:00',
-            'status' => 'Approved'
+            'user_id'        => $dosen->id,
+            'matkul_id'      => $mk1->id,
+            'topik'          => 'Pengenalan Laravel Blade',
+            'tanggal_taping' => now(),
+            'sesi'           => '09:00 - 11:00',
+            'studio'         => 'Studio Multimedia',
+            'status'         => 'Pending',
+        ]);
+        $studio = Studio::create([
+            'nama'      => 'Studio Multimedia 1',
+            'kode'      => 'ST1',
+            'kapasitas' => 3,
         ]);
     }
 }

@@ -10,7 +10,6 @@ class AdminController extends Controller
 {
     public function index()
     {
-        // Ambil semua booking, urutkan pending paling atas
         $bookings = Booking::with(['user.prodi', 'matkul'])
             ->orderByRaw("FIELD(status, 'Pending', 'Approved', 'Taping', 'Editing', 'Ready', 'Published', 'Rejected')")
             ->latest()
@@ -21,7 +20,6 @@ class AdminController extends Controller
 
     public function updateStatus(Request $request, Booking $booking)
     {
-        // Logic perubahan status (Pending -> Approved -> Taping -> dll)
         $booking->update(['status' => $request->status]);
         return back()->with('success', 'Status berhasil diperbarui!');
     }

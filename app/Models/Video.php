@@ -9,15 +9,24 @@ class Video extends Model
 {
     use HasFactory;
 
-    protected $guarded = ['id'];
+    protected $fillable = [
+        'booking_id',
+        'judul',
+        'link_video',
+        'semester',
+        'tahun_akademik',
+    ];
 
-    public function booking() {
+    public function booking()
+    {
         return $this->belongsTo(Booking::class);
     }
-    public function getNamaDosenAttribute() {
+    public function getNamaDosenAttribute()
+    {
         return $this->booking->user->name ?? 'Unknown';
     }
-    public function getNamaProdiAttribute() {
+    public function getNamaProdiAttribute()
+    {
         return $this->booking->prodi->name ?? '-';
     }
 }

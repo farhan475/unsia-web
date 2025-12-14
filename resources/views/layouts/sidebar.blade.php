@@ -5,10 +5,8 @@
             <span class="font-bold text-lg text-white tracking-tight">Portal {{ ucfirst(Auth::user()->role) }}</span>
         </div>
     </div>
-
     <nav class="flex-1 px-4 py-6 space-y-1 overflow-y-auto">
         <p class="px-2 text-xs font-semibold text-blue-100 uppercase tracking-wider mb-2">Menu Utama</p>
-        
         @if(Auth::user()->role == 'dosen')
             <a href="{{ route('dashboard') }}" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->routeIs('dashboard') ? 'bg-theme-dark shadow-sm' : 'hover:bg-theme-dark text-blue-100' }}">
                 <i class="fa-solid fa-chart-line w-6 text-center mr-2"></i> Dashboard
@@ -17,18 +15,15 @@
                 <i class="fa-solid fa-plus w-6 text-center mr-2"></i> Ajukan Jadwal
             </a>
         @endif
-
         @if(Auth::user()->role == 'admin')
             <a href="{{ route('admin.dashboard') }}" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg {{ request()->routeIs('admin.dashboard') ? 'bg-theme-dark shadow-sm' : 'hover:bg-theme-dark text-blue-100' }}">
                 <i class="fa-solid fa-list-check w-6 text-center mr-2"></i> Antrian Produksi
             </a>
         @endif
-        
         <a href="#" class="flex items-center px-4 py-3 text-sm font-medium rounded-lg hover:bg-theme-dark text-blue-100">
             <i class="fa-brands fa-youtube w-6 text-center mr-2"></i> Video Library
         </a>
     </nav>
-    
     <!-- Logout Button -->
     <div class="border-t border-theme-dark p-4">
         <form action="{{ route('logout') }}" method="POST">
