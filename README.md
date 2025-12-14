@@ -22,7 +22,6 @@ Universitas Siber Asia (UNSIA)
 - Login dosen.
 - Form pengajuan taping: pilih mata kuliah, tanggal, sesi, dan keterangan.
 - Riwayat pengajuan dengan status: **Pending**, **Approved**, **Rejected**.
-- Pembatalan pengajuan jika status masih *Pending*.
 - Menu “Video Saya” untuk melihat video yang telah *Published*.
 
 ### 2. Modul Admin (Portal Studio)
@@ -32,11 +31,9 @@ Universitas Siber Asia (UNSIA)
 - Workflow produksi:
 Pending → Approved → Taping → Editing → Ready → Published
 - Input link video (YouTube/Server) saat publish.
-- Monitoring progres editing dan jadwal studio.
 
 ### 3. Video Library
 - Daftar video yang sudah *Published*.
-- Filter berdasarkan **tahun akademik**, **semester**, dan **program studi**.
 - Informasi ditampilkan: judul, dosen, mata kuliah, semester, prodi, dan link video.
 
 ---
@@ -118,8 +115,6 @@ Login Dosen & Admin.
 
 Pengajuan taping baru.
 
-Pembatalan pengajuan oleh dosen.
-
 Persetujuan & publikasi video oleh admin.
 
 Validasi status workflow taping.
@@ -174,13 +169,7 @@ resources/
 
 👨‍🏫 Data Dosen untuk admin (tabel, filter berdasarkan prodi dan nama).
 
-🕓 Activity Log otomatis setiap aksi approve, reject, atau publish.
-
 🔐 Role-based Access: Middleware membedakan akses Dosen dan Admin.
-
-📄 Lisensi
-Proyek ini berlisensi di bawah MIT License
-Bebas digunakan untuk keperluan pembelajaran, pengembangan, dan penelitian.
 
 💡 Kontributor
 Developer: Farhan Asyathry
