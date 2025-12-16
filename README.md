@@ -1,15 +1,15 @@
-# 🎬 SIM-TAPING UNSIA
+# SIM-TAPING UNSIA
 
 **Sistem Informasi Manajemen Taping Video Pembelajaran**  
 Universitas Siber Asia (UNSIA)
 
 ---
 
-## 📘 Deskripsi Proyek
+## Deskripsi Proyek
 
 **SIM-Taping** adalah aplikasi berbasis web yang dirancang untuk mengelola seluruh proses produksi video pembelajaran di UNSIA — mulai dari pengajuan jadwal rekaman oleh dosen hingga publikasi video ke library universitas.
 
-### 🎯 Tujuan Sistem
+### Tujuan Sistem
 
 -   Meningkatkan **efisiensi penjadwalan studio** agar tidak bentrok.
 -   Menjamin **transparansi status produksi** dari pengajuan sampai publikasi.
@@ -17,7 +17,7 @@ Universitas Siber Asia (UNSIA)
 
 ---
 
-## 🧩 Modul Utama
+## Modul Utama
 
 ### 1. Modul Dosen (Portal Pengajuan)
 
@@ -42,48 +42,48 @@ Universitas Siber Asia (UNSIA)
 
 ---
 
-## 🎨 Tema dan Tampilan
+## Tema dan Tampilan
 
 | Elemen     | Warna     | Keterangan      |
 | ---------- | --------- | --------------- |
 | Tema utama | `#00588a` | UNSIA Blue      |
-| Pending    | 🟡 Kuning | Status menunggu |
-| Approved   | 🔵 Biru   | Disetujui       |
-| Editing    | 🟠 Oranye | Dalam proses    |
-| Published  | 🟢 Hijau  | Selesai tayang  |
+| Pending    |  Kuning | Status menunggu |
+| Approved   |  Biru   | Disetujui       |
+| Editing    |  Oranye | Dalam proses    |
+| Published  |  Hijau  | Selesai tayang  |
 
 Frontend dibuat menggunakan **Tailwind CSS** dan **Font Awesome**, agar tampilan modern dan responsif di semua perangkat.
 
 ---
 
-## ⚙️ Teknologi yang Digunakan
+## Tech Stack yang Digunakan
 
-| Komponen          | Teknologi              |
+| Komponen / Bagian     | Teknologi              |
 | ----------------- | ---------------------- |
 | Framework Backend | Laravel 12        |
 | Frontend          | Blade + Tailwind CSS   |
 | Database          | MySQL                  |
-| Auth              | Laravel Auth |
+| Auth              | Laravel Auth (Bawaan) |
 | Icon              | Font Awesome           |
 
 ---
 
-## 🧱 Struktur Database (Ringkasan)
+## Struktur Database (Ringkasan)
 
 | Tabel   | Deskripsi                           |
 | ------- | ----------------------------------- |
 | `users` | Menyimpan data akun dosen dan admin |
 
-### 🔗 Relasi Utama
+## Relasi Utama
 
--   `users (1)` → `taping_requests (N)`
+-   `users (1)` → `Booking (N)`
 -   `users (1)` → `videos (N)`
--   `taping_requests (1)` → `videos (1)`
--   `courses (1)` → `taping_requests (N)`
+-   `Booking (1)` → `videos (1)`
+-   `Matkul (1)` → `Booking (N)`
 
 ---
 
-## 🔧 Instalasi
+## Instalasi
 
 1. Clone repository:
 
@@ -104,27 +104,12 @@ php artisan migrate --seed
 Jalankan server lokal:
 
 php artisan serve
-Akses aplikasi di browser:
-👉 http://localhost:8000
+Jalankan aplikasi di browser:
+ http://localhost:8000
 
 
 
-📸 Panduan Demo
-Demo video (5–10 menit) harus menunjukkan:
-
-Login sebagai Dosen.
-
-Ajukan taping baru.
-
-Login sebagai Admin.
-
-Approve / Reject pengajuan.
-
-Ubah status hingga Published.
-
-Tampilkan video di Video Library.
-
-🧭 Struktur Folder Laravel (Hanya Gambaran kasar, belum di update lagi)
+ Struktur Folder Laravel (Hanya Gambaran kasar, belum di update lagi)
 app/
 ├── Http/
 │   ├── Controllers/
@@ -156,14 +141,14 @@ resources/
 │   └── layouts/
 │   └── components/
 └── css/
-🧩 Fitur Tambahan
-📅 Panduan Taping untuk dosen (statis, berisi langkah pengajuan dan aturan).
+## Fitur Tambahan
+- Panduan Taping untuk dosen (statis, berisi langkah pengajuan dan aturan).
 
-👨‍🏫 Data Dosen untuk admin (tabel, filter berdasarkan prodi dan nama).
+- Data Dosen untuk admin (tabel, filter berdasarkan prodi dan nama).
 
-🔐 Role-based Access: Middleware membedakan akses Dosen dan Admin.
+- Role-based Access: Middleware membedakan akses Dosen dan Admin.
 
-💡 Kontributor
+## Kontributor
 Developer: Farhan Asyathry
 Framework: Laravel
 Instansi: SMKN 64 Jakarta × Universitas Siber Asia (UNSIA)
